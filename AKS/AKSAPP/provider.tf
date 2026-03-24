@@ -22,6 +22,18 @@ terraform {
   }
 }
 
+terraform {
+  backend "azurerm" {
+    resource_group_name  = "rg-test"
+    storage_account_name = "tfstateaccount"
+    container_name       = "tfstate"
+    key                  = "aks.tfstate"
+  }
+}
+
+workspace "aksapp" {
+  name = "aksapp"
+
 provider "azurerm" {
   features {}
 }
